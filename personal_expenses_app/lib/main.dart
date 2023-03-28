@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, use_key_in_widget_constructors
+// ignore_for_file: sized_box_for_whitespace, use_key_in_widget_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 
@@ -49,7 +49,21 @@ class MyHomePage extends StatelessWidget {
           Column(
             children: transactions.map((tx) {
               return Card(
-                child: Text(tx.title),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        tx.amount.toString(),
+                      ),
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Text(tx.title),
+                        Text(tx.date.toString())
+                      ],
+                    )
+                  ],
+                ),
               );
             }).toList(),
           ),
