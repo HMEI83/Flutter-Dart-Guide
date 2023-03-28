@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, use_key_in_widget_constructors, avoid_unnecessary_containers
+// ignore_for_file: sized_box_for_whitespace, use_key_in_widget_constructors, avoid_unnecessary_containers, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
@@ -52,14 +52,32 @@ class MyHomePage extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                        color: Colors.purple,
+                        width: 2,
+                      )),
+                      padding: EdgeInsets.all(10),
                       child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.purple),
                         tx.amount.toString(),
                       ),
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(tx.title),
-                        Text(tx.date.toString())
+                        Text(
+                          tx.title,
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        Text(tx.date.toString(),
+                            style: TextStyle(color: Colors.grey)),
                       ],
                     )
                   ],
