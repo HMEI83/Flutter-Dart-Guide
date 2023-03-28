@@ -1,15 +1,15 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+
+import './transaction.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Flutter App',
       home: MyHomePage(),
     );
@@ -17,13 +17,22 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  final List<Transaction> transactions = [
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't2',
+        title: 'Weekly Groceries',
+        amount: 16.53,
+        date: DateTime.now()),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Personal Expenses App'),
+        // ignore: prefer_const_constructors
+        title: Text('Personal Expenses App'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -37,11 +46,12 @@ class MyHomePage extends StatelessWidget {
               child: Text('CHART!'),
             ),
           ),
-          const Card(
-            color: Colors.red,
-            child: Text(
-              'LIST OF TX',
-            ),
+          Column(
+            children: transactions.map((tx) {
+              return Card(
+                child: Text(tx.title),
+              );
+            }).toList(),
           ),
         ],
       ),
