@@ -1,6 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace, use_key_in_widget_constructors, avoid_unnecessary_containers, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import './transaction.dart';
 
@@ -65,7 +66,7 @@ class MyHomePage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                             color: Colors.purple),
-                        tx.amount.toString(),
+                        '\$${tx.amount}',
                       ),
                     ),
                     Column(
@@ -76,7 +77,7 @@ class MyHomePage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         ),
-                        Text(tx.date.toString(),
+                        Text(DateFormat('dd/MM/yyyy').format(tx.date),
                             style: TextStyle(color: Colors.grey)),
                       ],
                     )
