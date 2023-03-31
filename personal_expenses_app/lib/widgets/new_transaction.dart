@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: sort_child_properties_last, prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 
@@ -48,8 +48,8 @@ class NewTransaction extends StatelessWidget {
               // onChanged: (val) => amountInput = val,
             ),
             ElevatedButton(
-              onPressed: submitData,
               child: Text('Add Transaction'),
+              onPressed: submitData,
             ),
           ],
         ),
